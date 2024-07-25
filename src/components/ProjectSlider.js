@@ -4,19 +4,23 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import PlanetsApp from "../assets/img/PlanetsApp.png";
 import Chatbot from "../assets/img/Chatbot.png";
-import PortfolioWebsite from "../assets/img/PortfolioWebsite.png";
+import ReactDjangoCloud from "../assets/img/ReactDjangoCloud.png";
 import SecondHandz from "../assets/img/SecondHandz.png";
 import CodeGIF from "../assets/img/code.gif";
 import PortfolioNew from "../assets/img/PortfolioNew.png";
 import ToDoGen from "../assets/img/ToDoRN.png";
 import ReadmeGen from "../assets/img/StreamlitReadmeGen.png";
+import DCA from "../assets/img/DCA.png"
 const images = [
-  { link: 'https://github.com/mananrg/Flutter-solar-application.git', url: PlanetsApp, altText: 'Planets App' },
+  { link: 'https://github.com/mananrg/ios-dca-calculator.git', url: DCA, altText: 'DCA' },
+  { link: 'https://github.com/mananrg/ReactDjangoCloudProject.git', url: ReactDjangoCloud, altText: 'ToDoList' },
   { link: 'https://github.com/mananrg/Flutter_ChatGPT_Bot.git', url: Chatbot, altText: 'Chatbot App' },
   { link: 'https://github.com/mananrg/Second-Cycle', url: SecondHandz, altText: 'Second Handz' },
   { link: 'https://github.com/mananrg/react-portfolio-website', url: PortfolioNew, altText: 'Portfolio Website' },
   { link: 'https://github.com/mananrg/Streamlit-README.gen.git', url: ReadmeGen, altText: 'Streamlit Readme Generator'},
-  { link: 'https://github.com/mananrg/Task-Manager-ReactNative.git', url: ToDoGen, altText: 'React Native ToDo Generator'}
+  { link: 'https://github.com/mananrg/Task-Manager-ReactNative.git', url: ToDoGen, altText: 'React Native ToDo Generator'},
+  { link: 'https://github.com/mananrg/Flutter-solar-application.git', url: PlanetsApp, altText: 'Planets App' },
+
   // Add other project images here
 ];
 
