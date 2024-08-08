@@ -436,13 +436,12 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
   padding: 0 0 50px 0;
   position: relative;
 }
-.skill-bx {
+/* .skill-bx {
   background: #151515;
   border-radius: 64px;
-  text-align: center;
   padding: 60px 50px;
   margin-top: -60px;
-}
+} */
 .skill h2 {
   font-size: 45px;
   font-weight: 700;
@@ -454,11 +453,33 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon:before {
   line-height: 1.5em;
   margin: 14px 0 75px 0;
 }
-.skill-slider {
-  width: 80%;
-  margin: 0 auto;
-  position: relative;
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px 0;
 }
+
+.grid-item {
+  text-align: center;
+}
+
+.grid-item img {
+  width: 80px; /* Set the width of the icon */
+  height: 80px; /* Set the height of the icon */
+  object-fit: contain; /* Ensure the icon maintains its aspect ratio */
+  margin-bottom: 10px;
+}
+
+.skill-bx {
+  text-align: center;
+  padding: 40px;
+  background: #151515;
+  border-radius: 10px;
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.1);
+}
+
 
 /* Styles for screens larger than 600px */
 @media (min-width: 601px) {
