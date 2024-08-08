@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from 'react';
 import Python from "../assets/img/icons8-python.svg";
 import Swift from "../assets/img/icons8-swift-480.svg";
 import OpenCV from "../assets/img/icons8-opencv.svg";
@@ -12,12 +13,13 @@ import ReactIcon  from '../assets/img/react.png';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import colorSharp from "../assets/img/color-sharp-left.png"
+import colorSharp from "../assets/img/color-sharp-left.png";
 
 export const Skills = () => {
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(false);
+
   const responsive = {
     superLargeDesktop: {
-      // the naming can be any, depends on you.
       breakpoint: { max: 4000, min: 3000 },
       items: 5
     },
@@ -35,6 +37,29 @@ export const Skills = () => {
     }
   };
 
+  const skills = [
+    { src: Python, label: "Python", alt: "Python Icon" },
+    { src: Flutter, label: "Flutter & Dart", alt: "Flutter Icon" },
+    { src: Swift, label: "Swift", alt: "Swift Icon" },
+    { src: Flask, label: "Flask", alt: "Flask Icon" },
+    { src: NLP, label: "NLP", alt: "NLP Icon" },
+    { src: Tensorflow, label: "Machine Learning", alt: "Machine Learning Icon" },
+    { src: OpenCV, label: "Computer Vision", alt: "Computer Vision Icon" },
+    { src: Django, label: "Django", alt: "Django Icon" },
+    { src: Streamlit, label: "Streamlit", alt: "Streamlit Icon" },
+    { src: ReactIcon, label: "React", alt: "React Icon" },
+  ];
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 1024px)");
+    setIsMobileOrTablet(mediaQuery.matches);
+
+    const handleResize = () => setIsMobileOrTablet(mediaQuery.matches);
+    mediaQuery.addListener(handleResize);
+
+    return () => mediaQuery.removeListener(handleResize);
+  }, []);
+
   return (
     <section className="skill" id="skills">
       <div className="container">
@@ -42,66 +67,31 @@ export const Skills = () => {
           <div className="col-12">
             <div className="skill-bx wow zoomIn">
               <h2>Skills</h2>
-              <p>Experienced Python Developer, proficient in Mobile Application Development, Full Stack Development Natural Language Processing and Computer Vision and Machine Learning.</p>
-              <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
-                <div className="item">
-                  <img src={Python} alt="Python Icon" />
-                  <h5>Python</h5>
+              <p>Experienced Python Developer, proficient in Mobile Application Development, Full Stack Development, Natural Language Processing, Computer Vision, and Machine Learning.</p>
+              {isMobileOrTablet ? (
+                <Carousel responsive={responsive} infinite={true} className="owl-carousel owl-theme skill-slider">
+                  {skills.map((skill, index) => (
+                    <div className="item" key={index}>
+                      <img src={skill.src} alt={skill.alt} />
+                      <h5>{skill.label}</h5>
+                    </div>
+                  ))}
+                </Carousel>
+              ) : (
+                <div className="grid-container">
+                  {skills.map((skill, index) => (
+                    <div className="grid-item" key={index}>
+                      <img src={skill.src} alt={skill.alt} />
+                      <h5>{skill.label}</h5>
+                    </div>
+                  ))}
                 </div>
-
-                <div className="item">
-                  <img src={Flutter} alt="Dart Icon" />
-                  <h5>Flutter & Dart</h5>
-                </div>
-
-                <div className="item">
-                  <img src={Swift} alt="Swift Icon" />
-                  <h5>Swift</h5>
-                </div>
-
-                <div className="item">
-                  <img src={Flask} alt="Flask Icon" />
-                  <h5>Flask</h5>
-                </div>
-
-                <div className="item">
-                  <img src={NLP} alt="NLP Icon" />
-                  <h5>NLP</h5>
-                </div>
-
-                <div className="item">
-                  <img src={Tensorflow} alt="Machine Learning Icon" />
-                  <h5>Machine Learning</h5>
-                </div>
-
-                <div className="item">
-                  <img src={OpenCV} alt="Computer Vision Icon" />
-                  <h5>Computer Vision</h5>
-                </div>
-                {/*https://nikitahl.github.io/svg-circle-progress-generator*/}
-
-
-                <div className="item">
-                  <img src={Django} alt="Django Icon" />
-                  <h5>Django</h5>
-                </div>
-
-                <div className="item">
-                  <img src={Streamlit} alt="Streamlit Icon" />
-                  <h5>Streamlit</h5>
-                </div>
-
-                <div className="item">
-                  <img src={ReactIcon} alt="React Icon" />
-                  <h5>React</h5>
-                </div>
-              </Carousel>
+              )}
             </div>
           </div>
         </div>
       </div>
-      <img className="background-image-left" src={colorSharp} alt="Image"/>
+      <img className="background-image-left" src={colorSharp} alt="Background" />
     </section>
-  )
-
-}
+  );
+};
